@@ -7,6 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SumaDAO {
 
     public void guardar(Resultado resultado) {
@@ -55,5 +58,38 @@ public class SumaDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public List<Resultado> obtenerTodos() {
+
+        List<Resultado> lista = new ArrayList<>();
+
+        String sql = "SELECT fila, suma FROM suma_filas ORDER BY fila";
+
+        try (
+                Connection conexion = Conexion.obtenerConexion();
+                Statement st = conexion.createStatement();
+                ResultSet rs = st.executeQuery(sql)
+        ) {
+
+            while (rs.next()) {
+
+                Resultado resultado = new Resultado();
+
+                resultado.setFila(rs.getInt("fila"));
+                resultado.setSuma(rs.getDouble("suma"));
+
+                lista.add(resultado);
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+        return lista;
+
     }
 }

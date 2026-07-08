@@ -9,6 +9,10 @@ import java.awt.*;
 import java.io.File;
 import java.util.List;
 
+import com.ejemplo.database.SumaDAO;
+import com.ejemplo.model.Resultado;
+import java.util.List;
+
 public class VentanaPrincipal extends JFrame {
 
     // Componentes
@@ -27,9 +31,17 @@ public class VentanaPrincipal extends JFrame {
 
     private ExcelService excelService;
 
+    private JButton btnConsultar;
+
+    private SumaDAO sumaDAO;
+
     public VentanaPrincipal() {
 
         excelService = new ExcelService();
+
+        excelService = new ExcelService();
+
+        sumaDAO = new SumaDAO();
 
         inicializarComponentes();
 
@@ -56,6 +68,12 @@ public class VentanaPrincipal extends JFrame {
         panelSuperior.add(btnAbrir);
 
         add(panelSuperior, BorderLayout.NORTH);
+
+        //------------------------------------
+        
+        btnConsultar = new JButton("Consultar MySQL");
+
+        panelSuperior.add(btnConsultar);
 
         //------------------------------------
 
@@ -92,8 +110,31 @@ public class VentanaPrincipal extends JFrame {
     private void registrarEventos() {
 
         btnAbrir.addActionListener(e -> abrirArchivo());
+        btnConsultar.addActionListener(e -> consultarMySQL());
 
     }
+
+    private void consultarMySQL() {
+
+        List<Resultado> resultados = sumaDAO.obtenerTodos();
+
+        txtResultados.setText("");
+
+        txtResultados.append("===== DATOS GUARDADOS =====\n\n");
+
+        for (Resultado r : resultados) {
+
+            txtResultados.append(
+
+                    "Fila "
+                            + r.getFila()
+                            + " = "
+                            + r.getSuma()
+                            + "\n"
+
+            );
+        }
+    }   
 
     private void abrirArchivo() {
 
@@ -143,4 +184,4 @@ public class VentanaPrincipal extends JFrame {
                 "Archivo procesado correctamente! "
         );
     }
-}   
+}
