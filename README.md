@@ -1,6 +1,8 @@
 # -_proyecto_excel_mysql_- :.
 
-<img width="1254" height="1254" alt="image" src="https://github.com/user-attachments/assets/3c9a4278-88d7-4ea1-8bdf-75e432a23aa5" />      
+<img width="1254" height="1254" alt="image" src="https://github.com/user-attachments/assets/3c9a4278-88d7-4ea1-8bdf-75e432a23aa5" />    
+
+<img width="2558" height="1038" alt="image" src="https://github.com/user-attachments/assets/2e794e70-1f08-44e5-8302-4a11d1480436" />    
 
 # ProyectoExcelMySQL - Parte 1:
 ## Estructura del proyecto
