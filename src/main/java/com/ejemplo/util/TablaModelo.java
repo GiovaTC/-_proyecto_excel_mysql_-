@@ -8,4 +8,4 @@ public class TablaModelo extends DefaultTableModel {
     public boolean isCellEditable(int fila , int columna) {
         return false;
     }
-}   
+}
